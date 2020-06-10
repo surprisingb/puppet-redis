@@ -230,8 +230,8 @@ class redis (
   $cluster_enabled               = $::redis::params::cluster_enabled,
   $cluster_config_file           = $::redis::params::cluster_config_file,
   $cluster_node_timeout          = $::redis::params::cluster_node_timeout,
-  $cluster_require_full_coverage = $::redis::cluster_require_full_coverage,
-  $cluster_allow_read_when_down  = $::redis::cluster_allow_read_when_down,
+  $cluster_require_full_coverage = $::redis::params::cluster_require_full_coverage,
+  $cluster_allow_read_when_down  = $::redis::params::cluster_allow_read_when_down,
 ) inherits redis::params {
 
   contain ::redis::preinstall
