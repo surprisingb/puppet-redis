@@ -98,9 +98,11 @@ class redis::params {
   $slaveof                  = undef
 
   # redis.conf.erb - redis 3.0 clustering
-  $cluster_enabled        = false
-  $cluster_config_file    = 'nodes.conf'
-  $cluster_node_timeout   = 5000
+  $cluster_enabled               = false
+  $cluster_config_file           = 'nodes.conf'
+  $cluster_node_timeout          = 5000
+  $cluster_require_full_coverage = 'yes'
+  $cluster_allow_read_when_down  = 'no'
 
   case $::osfamily {
     'Debian': {

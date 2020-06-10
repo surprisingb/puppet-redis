@@ -203,6 +203,8 @@ define redis::instance(
   $cluster_enabled               = $::redis::cluster_enabled,
   $cluster_config_file           = $::redis::cluster_config_file,
   $cluster_node_timeout          = $::redis::cluster_node_timeout,
+  $cluster_require_full_coverage = $::redis::cluster_require_full_coverage,
+  $cluster_allow_read_when_down  = $::redis::cluster_allow_read_when_down,
   $service_ensure                = $::redis::service_ensure,
   $service_enable                = $::redis::service_enable,
   $service_group                 = $::redis::service_group,
@@ -335,6 +337,12 @@ define redis::instance(
       }
       /^3.2./: {
         File[$redis_file_name_orig] { content => template('redis/redis.conf.3.2.erb') }
+      }
+      /^5.0./: {
+        File[$redis_file_name_orig] { content => template('redis/redis.conf.5.0.erb') }
+      }
+      /^6.0./: {
+        File[$redis_file_name_orig] { content => template('redis/redis.conf.6.0.erb') }
       }
       default: {
         File[$redis_file_name_orig] { content => template($conf_template) }
